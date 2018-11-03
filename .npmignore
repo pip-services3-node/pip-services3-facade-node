@@ -1,0 +1,10 @@
+/.vscode
+/src
+/test
+/obj/test
+/doc
+/data
+/docker
+/.dockerignore
+/*.sh
+/*.ps1

@@ -1,0 +1,299 @@
+/**
+ * @file List of simulated errors
+ * @copyright Conceptual Vision Consulting LLC 2014-2015
+ */
+
+'use strict';
+
+module.exports = {
+
+    default: {
+
+        std_generic: {
+            probability: 0.05,
+            errors: [
+                {code: 400, name: 'Bad request'},
+                {code: 500, name: 'Internal error'},
+                {code: 503, name: 'Service unavailable'}
+            ]
+        },
+
+        std_auth: {
+            probability: 0.05,
+            errors: [
+                {code: 401, name: 'Unauthorized'},
+                {code: 440, name: 'Session expired'}
+            ]
+        },
+
+        entry: {
+            probability: 0.2,
+            errors: [
+
+                // User management errors
+                {path: '/api/1.0/signup', method: 'POST', code: 400, name: 'Bad Request',  error: 1100, message: 'Missing email'},
+                {path: '/api/1.0/signup', method: 'POST', code: 400, name: 'Bad Request',  error: 1101, message: 'Missing name'},
+                {path: '/api/1.0/signup', method: 'POST', code: 400, name: 'Bad Request',  error: 1102, message: 'Missing password'},
+                {path: '/api/1.0/signup', method: 'POST', code: 400, name: 'Bad Request',  error: 1103, message: 'Password should be 5 to 20 symbols long'},
+                {path: '/api/1.0/signup', method: 'POST', code: 400, name: 'Bad Request',  error: 1104, message: 'Email is already registered'},
+                {path: '/api/1.0/signin', method: 'ALL', code: 400, name: 'Bad Request',  error: 1106, message: 'User was not found'}, // right
+                {path: '/api/1.0/signin', method: 'ALL', code: 400, name: 'Bad Request',  error: 1107, message: 'Invalid password'}, // right
+                {path: '/api/1.0/signin', method: 'ALL', code: 400, name: 'Bad Request',  error: 1110, message: 'Account is locked'}, // right
+                {path: '/api/1.0/signin', method: 'ALL', code: 400, name: 'Bad Request',  error: 1111, message: 'Number of attempts exceeded. Account was locked'}, // right
+                {path: '/api/1.0/signin', method: 'ALL', code: 400, name: 'Bad Request',  error: 1112, message: 'Account is not active'}, // right
+                {path: '/api/1.0/reset_password', method: 'ALL', code: 400, name: 'Bad Request',  error: 1108, message: 'Invalid password recovery code'},
+                {path: '/api/1.0/reset_password', method: 'ALL', code: 400, name: 'Bad Request',  error: 1109, message: 'Password recovery code expired'},
+                {path: '/api/1.0/verify_email', method: 'ALL', code: 400, name: 'Bad Request',  error: 1113, message: 'Invalid email verification code'},
+                {path: '/api/1.0/change_password', method: 'ALL', code: 400, name: 'Bad Request',  error: 1105, message: 'Old and new passwords are identical'},
+                {path: '/api/1.0/change_password', method: 'ALL', code: 400, name: 'Bad Request',  error: 1107, message: 'Invalid password'},
+                {path: '/api/1.0/resend_email_verification', method: 'ALL', code: 400, name: 'Bad Request',  error: 1106, message: 'User was not found'},
+                {path: '/api/1.0/recover_password', method: 'ALL', code: 400, name: 'Bad Request',  error: 1106, message: 'User was not found'},
+        ]},
+
+        connections: {
+            probability: 0.2,
+            errors: [
+
+                // Connection errors
+                {path: '/api/1.0/parties/:id/members', method: 'POST', code: 400, name: 'Bad Request',  error: 1401, message: 'Connection operation is not allowed'},
+                {path: '/api/1.0/parties/:id/partners', method: 'POST', code: 400, name: 'Bad Request',  error: 1401, message: 'Connecting party was not found'},
+                {path: '/api/1.0/parties/:id/followers', method: 'POST', code: 400, name: 'Bad Request',  error: 1401, message: 'Connecting party was not found'},
+                {path: '/api/1.0/parties/:id/following', method: 'POST', code: 400, name: 'Bad Request',  error: 1401, message: 'Connecting party was not found'},
+                {path: '/api/1.0/parties/:id/members', method: 'POST', code: 400, name: 'Bad Request',  error: 1401, message: 'Connecting party was not found'},
+                {path: '/api/1.0/parties/:id/partners', method: 'POST', code: 400, name: 'Bad Request',  error: 1402, message: 'Missing party information'},
+                {path: '/api/1.0/parties/:id/followers', method: 'POST', code: 400, name: 'Bad Request',  error: 1402, message: 'Missing party information'},
+                {path: '/api/1.0/parties/:id/following', method: 'POST', code: 400, name: 'Bad Request',  error: 1402, message: 'Missing party information'},
+                {path: '/api/1.0/parties/:id/members', method: 'POST', code: 400, name: 'Bad Request',  error: 1402, message: 'Missing party information'},
+                {path: '/api/1.0/parties/:id/partners', method: 'POST', code: 400, name: 'Bad Request',  error: 1403, message: 'Missing connecting party information'},
+                {path: '/api/1.0/parties/:id/followers', method: 'POST', code: 400, name: 'Bad Request',  error: 1403, message: 'Missing connecting party information'},
+                {path: '/api/1.0/parties/:id/following', method: 'POST', code: 400, name: 'Bad Request',  error: 1403, message: 'Missing connecting party information'},
+                {path: '/api/1.0/parties/:id/members', method: 'POST', code: 400, name: 'Bad Request',  error: 1403, message: 'Missing connecting party information'},
+                {path: '/api/1.0/parties/:id/partners', method: 'POST', code: 400, name: 'Bad Request',  error: 1404, message: 'Connection to yourself is not allowed'},
+                {path: '/api/1.0/parties/:id/followers', method: 'POST', code: 400, name: 'Bad Request',  error: 1404, message: 'Connection to yourself is not allowed'},
+                {path: '/api/1.0/parties/:id/following', method: 'POST', code: 400, name: 'Bad Request',  error: 1404, message: 'Connection to yourself is not allowed'},
+                {path: '/api/1.0/parties/:id/members', method: 'POST', code: 400, name: 'Bad Request',  error: 1404, message: 'Connection to yourself is not allowed'},
+                {path: '/api/1.0/parties/:id/partners', method: 'POST', code: 400, name: 'Unauthorized', error: 1406, message: 'Connection was blocked by the party'},
+                {path: '/api/1.0/parties/:id/followers', method: 'POST', code: 400, name: 'Unauthorized', error: 1406, message: 'Connection was blocked by the party'},
+                {path: '/api/1.0/parties/:id/following', method: 'POST', code: 400, name: 'Unauthorized', error: 1406, message: 'Connection was blocked by the party'},
+                {path: '/api/1.0/parties/:id/members', method: 'POST', code: 400, name: 'Unauthorized', error: 1406, message: 'Connection was blocked by the party'},
+                {path: '/api/1.0/parties/:id/members', method: 'POST', code: 400, name: 'Bad Request',  error: 1407, message: 'Membership is not allowed between two persons'},
+                {path: '/api/1.0/parties/:id/partners', method: 'POST', code: 400, name: 'Bad Request',  error: 1408, message: 'Connection is already established'},
+                {path: '/api/1.0/parties/:id/followers', method: 'POST', code: 400, name: 'Bad Request',  error: 1408, message: 'Connection is already established'},
+                {path: '/api/1.0/parties/:id/following', method: 'POST', code: 400, name: 'Bad Request',  error: 1408, message: 'Connection is already established'},
+                {path: '/api/1.0/parties/:id/members', method: 'POST', code: 400, name: 'Bad Request',  error: 1408, message: 'Connection is already established'},
+                {path: '/api/1.0/parties/:id/partners', method: 'POST', code: 400, name: 'Bad Request',  error: 1409, message: 'Connection is allowed by invitation only'},
+                {path: '/api/1.0/parties/:id/followers', method: 'POST', code: 400, name: 'Bad Request',  error: 1409, message: 'Connection is allowed by invitation only'},
+                {path: '/api/1.0/parties/:id/following', method: 'POST', code: 400, name: 'Bad Request',  error: 1409, message: 'Connection is allowed by invitation only'},
+                {path: '/api/1.0/parties/:id/members', method: 'POST', code: 400, name: 'Bad Request',  error: 1409, message: 'Connection is allowed by invitation only'},
+                {path: '/api/1.0/parties/:id/partners', method: 'POST', code: 400, name: 'Bad Request',  error: 1410, message: 'Connection operation is not allowed'},
+                {path: '/api/1.0/parties/:id/followers', method: 'POST', code: 400, name: 'Bad Request',  error: 1410, message: 'Connection operation is not allowed'},
+                {path: '/api/1.0/parties/:id/following', method: 'POST', code: 400, name: 'Bad Request',  error: 1410, message: 'Connection operation is not allowed'},
+                {path: '/api/1.0/parties/:id/partners', method: 'GET', code: 400, name: 'Bad Request',  error: 1400, message: 'Connection was not found'},
+                {path: '/api/1.0/parties/:id/followers', method: 'GET', code: 400, name: 'Bad Request',  error: 1400, message: 'Connection was not found'},
+                {path: '/api/1.0/parties/:id/following', method: 'GET', code: 400, name: 'Bad Request',  error: 1400, message: 'Connection was not found'},
+                {path: '/api/1.0/parties/:id/members', method: 'GET', code: 400, name: 'Bad Request',  error: 1400, message: 'Connection was not found'},
+                {path: '/api/1.0/parties/:id/partners/:id/accept', method: 'ALL', code: 400, name: 'Bad Request',  error: 1400, message: 'Connection was not found'},
+                {path: '/api/1.0/parties/:id/followers/:id/accept', method: 'ALL', code: 400, name: 'Bad Request',  error: 1400, message: 'Connection was not found'},
+                {path: '/api/1.0/parties/:id/following/:id/accept', method: 'ALL', code: 400, name: 'Bad Request',  error: 1400, message: 'Connection was not found'},
+                {path: '/api/1.0/parties/:id/members/:id/accept', method: 'ALL', code: 400, name: 'Bad Request',  error: 1400, message: 'Connection was not found'},
+                {path: '/api/1.0/parties/:id/partners/:id/reject', method: 'ALL', code: 400, name: 'Bad Request',  error: 1400, message: 'Connection was not found'},
+                {path: '/api/1.0/parties/:id/followers/:id/reject', method: 'ALL', code: 400, name: 'Bad Request',  error: 1400, message: 'Connection was not found'},
+                {path: '/api/1.0/parties/:id/following/:id/reject', method: 'ALL', code: 400, name: 'Bad Request',  error: 1400, message: 'Connection was not found'},
+                {path: '/api/1.0/parties/:id/members/:id/reject', method: 'ALL', code: 400, name: 'Bad Request',  error: 1400, message: 'Connection was not found'},
+        ]},
+
+        posts: {
+            probability: 0.2,
+            errors: [
+
+                // Post comments errors
+                {path: '/api/1.0/parties/:id/posts/:id', method: 'GET', code: 400, name: 'Bad Request',  error: 1500, message: 'Entity was not found'},
+                {path: '/api/1.0/parties/:id/posts/:id', method: 'PUT', code: 409, name: 'Conflict Detected',error: 1504, message: 'Updating old object is not allowed'},
+                {path: '/api/1.0/parties/:id/posts/:id/comments', method: 'POST', code: 400, name: 'Bad Request',  error: 1500, message: 'Entity was not found'},
+                {path: '/api/1.0/parties/:id/posts/:id/comments/:id', method: 'PUT', code: 400, name: 'Bad Request',  error: 1500, message: 'Entity was not found'},
+                {path: '/api/1.0/parties/:id/posts/:id/comments/:id', method: 'PUT', code: 400, name: 'Bad Request',  error: 1501, message: 'Comment was not found'},
+                {path: '/api/1.0/parties/:id/posts/:id/comments/:id', method: 'PUT', code: 400, name: 'Bad Request',  error: 1502, message: 'Changing comment is not allowed'},
+                {path: '/api/1.0/parties/:id/posts/:id/comments/:id', method: 'DELETE', code: 400, name: 'Bad Request',  error: 1503, message: 'Deleting comment is not allowed'},
+            ]},
+
+        goals: {
+            probability: 0.2,
+            errors: [
+                // Goals errors
+                {path: '/api/1.0/parties/:id/goals/:id', method: 'GET', code: 400, name: 'Bad Request',  error: 1500, message: 'Entity was not found'},
+                {path: '/api/1.0/parties/:id/goals/:id', method: 'PUT', code: 409, name: 'Conflict Detected',error: 1504, message: 'Updating old object is not allowed'},
+                {path: '/api/1.0/parties/:id/goals/:id/invite', method: 'ALL', code: 400, name: 'Bad Request',  error: 1201, message: 'Invalid action parameter'},
+                {path: '/api/1.0/parties/:id/goals/:id/join', method: 'ALL', code: 400, name: 'Bad Request',  error: 1201, message: 'Invalid action parameter'},
+                {path: '/api/1.0/parties/:id/goals/:id/accept', method: 'ALL', code: 400, name: 'Bad Request',  error: 1201, message: 'Invalid action parameter'},
+                {path: '/api/1.0/parties/:id/goals/:id/reject', method: 'ALL', code: 400, name: 'Bad Request',  error: 1201, message: 'Invalid action parameter'},
+                {path: '/api/1.0/parties/:id/goals/:id/invite', method: 'ALL', code: 400, name: 'Bad Request',  error: 1202, message: 'Contributor was not found'},
+                {path: '/api/1.0/parties/:id/goals/:id/join', method: 'ALL', code: 400, name: 'Bad Request',  error: 1202, message: 'Contributor was not found'},
+                {path: '/api/1.0/parties/:id/goals/:id/accept', method: 'ALL', code: 400, name: 'Bad Request',  error: 1202, message: 'Contributor was not found'},
+                {path: '/api/1.0/parties/:id/goals/:id/reject', method: 'ALL', code: 400, name: 'Bad Request',  error: 1202, message: 'Contributor was not found'},
+                {path: '/api/1.0/parties/:id/goals/:id/invite', method: 'ALL', code: 400, name: 'Bad Request',  error: 1203, message: 'Contributor must be active to perform this operation'},
+                {path: '/api/1.0/parties/:id/goals/:id/join', method: 'ALL', code: 400, name: 'Bad Request',  error: 1204, message: 'Join is allowed by invitation only'},
+                {path: '/api/1.0/parties/:id/goals/:id/join', method: 'ALL', code: 400, name: 'Bad Request',  error: 1205, message: 'Contributor access is not allowed'},
+                {path: '/api/1.0/parties/:id/goals/:id/accept', method: 'ALL', code: 400, name: 'Bad Request',  error: 1203, message: 'Contributor must be active to perform this operation'},
+                {path: '/api/1.0/parties/:id/goals/:id/accept', method: 'ALL', code: 400, name: 'Bad Request',  error: 1205, message: 'Contributor access is not allowed'},
+                {path: '/api/1.0/parties/:id/goals/:id/reject', method: 'ALL', code: 400, name: 'Bad Request',  error: 1203, message: 'Contributor must be active to perform this operation'},
+                {path: '/api/1.0/parties/:id/goals/:id/reject', method: 'ALL', code: 400, name: 'Bad Request',  error: 1205, message: 'Contributor access is not allowed'},
+            ]},
+
+        areas: {
+            probability: 0.2,
+            errors: [
+                // Areas errors
+                {path: '/api/1.0/parties/:id/areas/:id', method: 'GET', code: 400, name: 'Bad Request',  error: 1500, message: 'Entity was not found'},
+                {path: '/api/1.0/parties/:id/areas/:id', method: 'PUT', code: 409, name: 'Conflict Detected', error: 1504, message: 'Updating old object is not allowed'},
+                {path: '/api/1.0/parties/:id/areas/:id/invite', method: 'ALL', code: 400, name: 'Bad Request',  error: 1201, message: 'Invalid action parameter'},
+                {path: '/api/1.0/parties/:id/areas/:id/join', method: 'ALL', code: 400, name: 'Bad Request',  error: 1201, message: 'Invalid action parameter'},
+                {path: '/api/1.0/parties/:id/areas/:id/accept', method: 'ALL', code: 400, name: 'Bad Request',  error: 1201, message: 'Invalid action parameter'},
+                {path: '/api/1.0/parties/:id/areas/:id/reject', method: 'ALL', code: 400, name: 'Bad Request',  error: 1201, message: 'Invalid action parameter'},
+                {path: '/api/1.0/parties/:id/areas/:id/invite', method: 'ALL', code: 400, name: 'Bad Request',  error: 1202, message: 'Contributor was not found'},
+                {path: '/api/1.0/parties/:id/areas/:id/join', method: 'ALL', code: 400, name: 'Bad Request',  error: 1202, message: 'Contributor was not found'},
+                {path: '/api/1.0/parties/:id/areas/:id/accept', method: 'ALL', code: 400, name: 'Bad Request',  error: 1202, message: 'Contributor was not found'},
+                {path: '/api/1.0/parties/:id/areas/:id/reject', method: 'ALL', code: 400, name: 'Bad Request',  error: 1202, message: 'Contributor was not found'},
+                {path: '/api/1.0/parties/:id/areas/:id/invite', method: 'ALL', code: 400, name: 'Bad Request',  error: 1203, message: 'Contributor must be active to perform this operation'},
+                {path: '/api/1.0/parties/:id/areas/:id/join', method: 'ALL', code: 400, name: 'Bad Request',  error: 1204, message: 'Join is allowed by invitation only'},
+                {path: '/api/1.0/parties/:id/areas/:id/join', method: 'ALL', code: 400, name: 'Bad Request',  error: 1205, message: 'Contributor access is not allowed'},
+                {path: '/api/1.0/parties/:id/areas/:id/accept', method: 'ALL', code: 400, name: 'Bad Request',  error: 1203, message: 'Contributor must be active to perform this operation'},
+                {path: '/api/1.0/parties/:id/areas/:id/accept', method: 'ALL', code: 400, name: 'Bad Request',  error: 1205, message: 'Contributor access is not allowed'},
+                {path: '/api/1.0/parties/:id/areas/:id/reject', method: 'ALL', code: 400, name: 'Bad Request',  error: 1203, message: 'Contributor must be active to perform this operation'},
+                {path: '/api/1.0/parties/:id/areas/:id/reject', method: 'ALL', code: 400, name: 'Bad Request',  error: 1205, message: 'Contributor access is not allowed'},
+
+             ]},
+
+        notes: {
+            probability: 0.2,
+            errors: [
+                // Notes errors
+                {path: '/api/1.0/parties/:id/notes/:id', method: 'GET', code: 400, name: 'Bad Request',  error: 1500, message: 'Entity was not found'},
+                {path: '/api/1.0/parties/:id/notes/:id', method: 'PUT', code: 409, name: 'Conflict Detected',error: 1504, message: 'Updating old object is not allowed'},
+                {path: '/api/1.0/parties/:id/notes/:id/invite', method: 'ALL', code: 400, name: 'Bad Request',  error: 1201, message: 'Invalid action parameter'},
+                {path: '/api/1.0/parties/:id/notes/:id/join', method: 'ALL', code: 400, name: 'Bad Request',  error: 1201, message: 'Invalid action parameter'},
+                {path: '/api/1.0/parties/:id/notes/:id/accept', method: 'ALL', code: 400, name: 'Bad Request',  error: 1201, message: 'Invalid action parameter'},
+                {path: '/api/1.0/parties/:id/notes/:id/reject', method: 'ALL', code: 400, name: 'Bad Request',  error: 1201, message: 'Invalid action parameter'},
+                {path: '/api/1.0/parties/:id/notes/:id/invite', method: 'ALL', code: 400, name: 'Bad Request',  error: 1202, message: 'Contributor was not found'},
+                {path: '/api/1.0/parties/:id/notes/:id/join', method: 'ALL', code: 400, name: 'Bad Request',  error: 1202, message: 'Contributor was not found'},
+                {path: '/api/1.0/parties/:id/notes/:id/accept', method: 'ALL', code: 400, name: 'Bad Request',  error: 1202, message: 'Contributor was not found'},
+                {path: '/api/1.0/parties/:id/notes/:id/reject', method: 'ALL', code: 400, name: 'Bad Request',  error: 1202, message: 'Contributor was not found'},
+                {path: '/api/1.0/parties/:id/notes/:id/invite', method: 'ALL', code: 400, name: 'Bad Request',  error: 1203, message: 'Contributor must be active to perform this operation'},
+                {path: '/api/1.0/parties/:id/notes/:id/join', method: 'ALL', code: 400, name: 'Bad Request',  error: 1204, message: 'Join is allowed by invitation only'},
+                {path: '/api/1.0/parties/:id/notes/:id/join', method: 'ALL', code: 400, name: 'Bad Request',  error: 1205, message: 'Contributor access is not allowed'},
+                {path: '/api/1.0/parties/:id/notes/:id/accept', method: 'ALL', code: 400, name: 'Bad Request',  error: 1203, message: 'Contributor must be active to perform this operation'},
+                {path: '/api/1.0/parties/:id/notes/:id/accept', method: 'ALL', code: 400, name: 'Bad Request',  error: 1205, message: 'Contributor access is not allowed'},
+                {path: '/api/1.0/parties/:id/notes/:id/reject', method: 'ALL', code: 400, name: 'Bad Request',  error: 1203, message: 'Contributor must be active to perform this operation'},
+                {path: '/api/1.0/parties/:id/notes/:id/reject', method: 'ALL', code: 400, name: 'Bad Request',  error: 1205, message: 'Contributor access is not allowed'},
+            ]},
+
+        visions: {
+            probability: 0.2,
+            errors: [
+                // Visions errors
+                {path: '/api/1.0/parties/:id/visions/:id', method: 'GET', code: 400, name: 'Bad Request',  error: 1500, message: 'Entity was not found'},
+                {path: '/api/1.0/parties/:id/visions/:id', method: 'PUT', code: 409, name: 'Conflict Detected',error: 1504, message: 'Updating old object is not allowed'},
+                {path: '/api/1.0/parties/:id/visions/:id/invite', method: 'ALL', code: 400, name: 'Bad Request',  error: 1201, message: 'Invalid action parameter'},
+                {path: '/api/1.0/parties/:id/visions/:id/join', method: 'ALL', code: 400, name: 'Bad Request',  error: 1201, message: 'Invalid action parameter'},
+                {path: '/api/1.0/parties/:id/visions/:id/accept', method: 'ALL', code: 400, name: 'Bad Request',  error: 1201, message: 'Invalid action parameter'},
+                {path: '/api/1.0/parties/:id/visions/:id/reject', method: 'ALL', code: 400, name: 'Bad Request',  error: 1201, message: 'Invalid action parameter'},
+                {path: '/api/1.0/parties/:id/visions/:id/invite', method: 'ALL', code: 400, name: 'Bad Request',  error: 1202, message: 'Contributor was not found'},
+                {path: '/api/1.0/parties/:id/visions/:id/join', method: 'ALL', code: 400, name: 'Bad Request',  error: 1202, message: 'Contributor was not found'},
+                {path: '/api/1.0/parties/:id/visions/:id/accept', method: 'ALL', code: 400, name: 'Bad Request',  error: 1202, message: 'Contributor was not found'},
+                {path: '/api/1.0/parties/:id/visions/:id/reject', method: 'ALL', code: 400, name: 'Bad Request',  error: 1202, message: 'Contributor was not found'},
+                {path: '/api/1.0/parties/:id/visions/:id/invite', method: 'ALL', code: 400, name: 'Bad Request',  error: 1203, message: 'Contributor must be active to perform this operation'},
+                {path: '/api/1.0/parties/:id/visions/:id/join', method: 'ALL', code: 400, name: 'Bad Request',  error: 1204, message: 'Join is allowed by invitation only'},
+                {path: '/api/1.0/parties/:id/visions/:id/join', method: 'ALL', code: 400, name: 'Bad Request',  error: 1205, message: 'Contributor access is not allowed'},
+                {path: '/api/1.0/parties/:id/visions/:id/accept', method: 'ALL', code: 400, name: 'Bad Request',  error: 1203, message: 'Contributor must be active to perform this operation'},
+                {path: '/api/1.0/parties/:id/visions/:id/accept', method: 'ALL', code: 400, name: 'Bad Request',  error: 1205, message: 'Contributor access is not allowed'},
+                {path: '/api/1.0/parties/:id/visions/:id/reject', method: 'ALL', code: 400, name: 'Bad Request',  error: 1203, message: 'Contributor must be active to perform this operation'},
+                {path: '/api/1.0/parties/:id/visions/:id/reject', method: 'ALL', code: 400, name: 'Bad Request',  error: 1205, message: 'Contributor access is not allowed'},
+            ]},
+
+        events: {
+            probability: 0.2,
+            errors: [
+                // Events errors
+                {path: '/api/1.0/parties/:id/events/:id', method: 'GET', code: 400, name: 'Bad Request',  error: 1500, message: 'Entity was not found'},
+                {path: '/api/1.0/parties/:id/events/:id', method: 'PUT', code: 409, name: 'Conflict Detected',error: 1504, message: 'Updating old object is not allowed'},
+                {path: '/api/1.0/parties/:id/events/:id/invite', method: 'ALL', code: 400, name: 'Bad Request',  error: 1201, message: 'Invalid action parameter'},
+                {path: '/api/1.0/parties/:id/events/:id/join', method: 'ALL', code: 400, name: 'Bad Request',  error: 1201, message: 'Invalid action parameter'},
+                {path: '/api/1.0/parties/:id/events/:id/accept', method: 'ALL', code: 400, name: 'Bad Request',  error: 1201, message: 'Invalid action parameter'},
+                {path: '/api/1.0/parties/:id/events/:id/reject', method: 'ALL', code: 400, name: 'Bad Request',  error: 1201, message: 'Invalid action parameter'},
+                {path: '/api/1.0/parties/:id/events/:id/invite', method: 'ALL', code: 400, name: 'Bad Request',  error: 1202, message: 'Contributor was not found'},
+                {path: '/api/1.0/parties/:id/events/:id/join', method: 'ALL', code: 400, name: 'Bad Request',  error: 1202, message: 'Contributor was not found'},
+                {path: '/api/1.0/parties/:id/events/:id/accept', method: 'ALL', code: 400, name: 'Bad Request',  error: 1202, message: 'Contributor was not found'},
+                {path: '/api/1.0/parties/:id/events/:id/reject', method: 'ALL', code: 400, name: 'Bad Request',  error: 1202, message: 'Contributor was not found'},
+                {path: '/api/1.0/parties/:id/events/:id/invite', method: 'ALL', code: 400, name: 'Bad Request',  error: 1203, message: 'Contributor must be active to perform this operation'},
+                {path: '/api/1.0/parties/:id/events/:id/join', method: 'ALL', code: 400, name: 'Bad Request',  error: 1204, message: 'Join is allowed by invitation only'},
+                {path: '/api/1.0/parties/:id/events/:id/join', method: 'ALL', code: 400, name: 'Bad Request',  error: 1205, message: 'Contributor access is not allowed'},
+                {path: '/api/1.0/parties/:id/events/:id/accept', method: 'ALL', code: 400, name: 'Bad Request',  error: 1203, message: 'Contributor must be active to perform this operation'},
+                {path: '/api/1.0/parties/:id/events/:id/accept', method: 'ALL', code: 400, name: 'Bad Request',  error: 1205, message: 'Contributor access is not allowed'},
+                {path: '/api/1.0/parties/:id/events/:id/reject', method: 'ALL', code: 400, name: 'Bad Request',  error: 1203, message: 'Contributor must be active to perform this operation'},
+                {path: '/api/1.0/parties/:id/events/:id/reject', method: 'ALL', code: 400, name: 'Bad Request',  error: 1205, message: 'Contributor access is not allowed'},
+        ]},
+
+        files: {
+            probability: 0.2,
+            errors: [
+                // File operations
+                {path: '/api/1.0/parties/:id/files', method: 'POST', code: 400, name: 'Bad Request',  error: 700, message: 'File was not found'},
+                {path: '/api/1.0/parties/:id/files', method: 'POST', code: 400, name: 'Bad Request',  error: 701, message: 'File exceeded maximum length'},
+                {path: '/api/1.0/parties/:id/files', method: 'POST', code: 400, name: 'Bad Request',  error: 702, message: 'Cannot upload empty file'},
+                {path: '/api/1.0/parties/:id/files', method: 'GET', code: 400, name: 'Bad Request',  error: 700, message: 'File was not found'},
+            ]},
+
+        messages: {
+            probability: 0.2,
+            errors: [
+                // Messages
+                {path: '/api/1.0/parties/:partyId/messages', method: 'POST', code: 400, name: 'Bad Request',  error: 1200, message: 'Sender was not found'},
+                {path: '/api/1.0/parties/:partyId/messages', method: 'POST', code: 400, name: 'Bad Request',  error: 1201, message: 'Receiver was not found'},
+                {path: '/api/1.0/parties/:partyId/messages', method: 'POST', code: 400, name: 'Bad Request',  error: 1202, message: 'Message must have at least one recipient'},
+                {path: '/api/1.0/parties/:partyId/messages', method: 'POST', code: 400, name: 'Bad Request',  error: 1203, message: 'Sender was not found'},
+                {path: '/api/1.0/parties/:partyId/messages/:id', method: 'GET', code: 400, name: 'Bad Request',  error: 1200, message: 'Message was not found'},
+                {path: '/api/1.0/parties/:partyId/messages/received', method: 'GET', code: 400, name: 'Bad Request',  error: 1200, message: 'Message was not found'},
+                {path: '/api/1.0/parties/:partyId/messages', method: 'GET', code: 400, name: 'Bad Request',  error: 1200, message: 'Message was not found'},
+        ]},
+
+        settings: {
+            probability: 0.2,
+            errors: [
+                // Parties
+                {path: '/api/1.0/parties', method: 'POST', code: 400, name: 'Bad Request',  error: 1300, message: 'Missing email'},
+                {path: '/api/1.0/parties/:id', method: 'PUT', code: 400, name: 'Bad Request',  error: 1300, message: 'Missing email'},
+                {path: '/api/1.0/parties', method: 'POST', code: 400, name: 'Bad Request',  error: 1301, message: 'Invalid email'},
+                {path: '/api/1.0/parties/:id', method: 'PUT', code: 400, name: 'Bad Request',  error: 1301, message: 'Invalid email'},
+                {path: '/api/1.0/parties', method: 'POST', code: 400, name: 'Bad Request',  error: 1302, message: 'Missing name'},
+                {path: '/api/1.0/parties/:id', method: 'PUT', code: 400, name: 'Bad Request',  error: 1302, message: 'Missing name'},
+                {path: '/api/1.0/parties', method: 'POST', code: 400, name: 'Bad Request',  error: 1303, message: 'Missing password'},
+                {path: '/api/1.0/parties/:id', method: 'PUT', code: 400, name: 'Bad Request',  error: 1303, message: 'Missing password'},
+                {path: '/api/1.0/parties/:id', method: 'PUT', code: 400, name: 'Bad Request',  error: 1304, message: 'Password should be 5 to 20 symbols long'},
+                {path: '/api/1.0/parties', method: 'POST', code: 400, name: 'Bad Request',  error: 1305, message: 'Email is already registered'},
+                {path: '/api/1.0/parties/:id', method: 'PUT', code: 400, name: 'Bad Request',  error: 1305, message: 'Email is already registered'},
+                {path: '/api/1.0/parties', method: 'POST', code: 400, name: 'Bad Request',  error: 1306, message: 'Missing email'},
+                {path: '/api/1.0/parties/:id', method: 'PUT', code: 400, name: 'Bad Request',  error: 1306, message: 'Missing email'},
+                {path: '/api/1.0/parties/:id', method: 'PUT', code: 400, name: 'Bad Request',  error: 1307, message: 'Party was not found'},
+        ]},
+
+        avatars: {
+            probability: 0.2,
+            errors: [
+                // Avatars
+                {path: '/api/1.0/parties/:id/goals/:id/avatar', method: 'GET', code: 400, name: 'Bad Request',  error: 1700, message: 'Avatar does not exist'},
+                {path: '/api/1.0/parties/:id/areas/:id/avatar', method: 'GET', code: 400, name: 'Bad Request',  error: 1700, message: 'Avatar does not exist'},
+                {path: '/api/1.0/parties/:id/visions/:id/avatar', method: 'GET', code: 400, name: 'Bad Request',  error: 1700, message: 'Avatar does not exist'},
+                {path: '/api/1.0/parties/:id/goals/:id/avatar', method: 'POST', code: 400, name: 'Bad Request',  error: 700, message: 'File was not found'},
+                {path: '/api/1.0/parties/:id/goals/:id/avatar', method: 'POST', code: 400, name: 'Bad Request',  error: 701, message: 'File exceeded maximum length'},
+                {path: '/api/1.0/parties/:id/goals/:id/avatar', method: 'POST', code: 400, name: 'Bad Request',  error: 702, message: 'Cannot upload empty file'},
+                {path: '/api/1.0/parties/:id/areas/:id/avatar', method: 'POST', code: 400, name: 'Bad Request',  error: 700, message: 'File was not found'},
+                {path: '/api/1.0/parties/:id/areas/:id/avatar', method: 'POST', code: 400, name: 'Bad Request',  error: 701, message: 'File exceeded maximum length'},
+                {path: '/api/1.0/parties/:id/areas/:id/avatar', method: 'POST', code: 400, name: 'Bad Request',  error: 702, message: 'Cannot upload empty file'},
+                {path: '/api/1.0/parties/:id/visions/:id/avatar', method: 'POST', code: 400, name: 'Bad Request',  error: 700, message: 'File was not found'},
+                {path: '/api/1.0/parties/:id/visions/:id/avatar', method: 'POST', code: 400, name: 'Bad Request',  error: 701, message: 'File exceeded maximum length'},
+                {path: '/api/1.0/parties/:id/visions/:id/avatar', method: 'POST', code: 400, name: 'Bad Request',  error: 702, message: 'Cannot upload empty file'},
+                {path: '/api/1.0/parties/:id/avatar', method: 'ALL', code: 400, name: 'Bad Request',  error: 700, message: 'File was not found'},
+                {path: '/api/1.0/parties/:id/avatar', method: 'POST', code: 400, name: 'Bad Request',  error: 701, message: 'File exceeded maximum length'},
+                {path: '/api/1.0/parties/:id/avatar', method: 'POST', code: 400, name: 'Bad Request',  error: 702, message: 'Cannot upload empty file'},
+        ]}
+    }
+};

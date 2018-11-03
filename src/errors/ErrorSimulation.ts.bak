@@ -1,0 +1,115 @@
+let _ = require('lodash');
+
+import { ErrorSender } from '../utilities/ErrorSender';
+
+let errorConfig = require('./error_sim_list'),
+    randlib = require('random-js'),
+    random = new randlib(randlib.engines.mt19937().autoSeed()), // better distributed random gen
+    config = errorConfig.default,
+    activated = {};
+
+function activate(params) {
+    var category = config[params.category];
+    if (category) {
+        if (params.probability >= 0 && params.probability <= 1) {
+            category.probability = params.probability;
+        }
+
+        _.each(category.errors, function (error) {
+            if ((params.error && error.error == params.error) ||
+                (params.error && error.code == params.error) ||
+                params.error == null) {
+                if (params.enabled) {
+                    error.enabled = true;
+                } else {
+                    delete error.enabled;
+                }
+            }
+        });
+
+        if (params.enabled) {
+            activated[params.category] = category;
+        } else if (activated[params.category]) {
+            delete activated[params.category]
+        }
+    }
+}
+
+function generateError(req, res, errorConfig) {
+    var error: any = new Error();
+    error.code = errorConfig.error ? errorConfig.error : random.integer(1, 10000);
+    error.message = errorConfig.message ? errorConfig.message : 'Most deadly errors arise from obsolete assumptions.';
+    error.data = 'An error is the more dangerous in proportion to the degree of truth which it contains.';
+    error.pip = errorConfig.path ? true : false;
+    error.name = errorConfig.name;
+    ErrorSender.sendErrorResponse(req, res, errorConfig.code, errorConfig.name, error);
+}
+
+function applicable(req, group) {
+
+    if (!group.errors[0].path) {
+        return group.errors;
+    }
+
+    var routeParts = req.path.split('/'),
+        possibleErrors = _.filter(group.errors, function (error) {
+            if(!error.enabled) {
+                return false;
+            }
+            if (req.method != error.method && error.method != 'ALL') {
+                return false;
+            }
+            var errorParts = error.path.split('/'),
+                match = routeParts.length >= errorParts.length;
+
+            if (match) {
+                for (var i = 0; i < errorParts.length; i++) {
+                    if (errorParts[i] != ':id') {
+                        if (routeParts[i] != errorParts[i]) {
+                            match = false;
+                            break;
+                        }
+                    }
+                }
+            }
+            return match;
+        });
+
+    return possibleErrors;
+}
+
+function simulate(req, res, next) {
+    if (_.isEmpty(activated)) {
+        next();
+        return;
+    }
+
+    var simulatable = {};
+
+    // Find simulatable errors
+    for (var name in activated) {
+        if (random.real(0, 1) < activated[name].probability) {
+            var applicableErrors = applicable(req, activated[name]);
+            if (!_.isEmpty(applicableErrors)) {
+                simulatable[name] = {errors: applicableErrors};
+            }
+        }
+    }
+
+    if (_.isEmpty(simulatable)) {
+        next();
+        return;
+    }
+
+    var group = simulatable[Object.keys(simulatable)[
+            random.integer(0, Object.keys(simulatable).length - 1, true)]],
+        error = group.errors[random.integer(0, group.errors.length - 1, true)];
+
+    generateError(req, res, error);
+}
+
+module.exports = {
+    config: config,
+    activate: activate,
+    simulate: simulate
+};

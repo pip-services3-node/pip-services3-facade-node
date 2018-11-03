@@ -1,0 +1,28 @@
+---
+# Container info
+- descriptor: "pip-services:context-info:default:default:*"
+  name: "Sample REST API"
+  description: "Demonstrate use of composable REST API"
+
+# Console logger
+- descriptor: "pip-services:logger:console:default:*"
+  level: trace
+
+# Log counters
+- descriptor: "pip-services:counters:log:default:*"
+
+# Main facade service
+- descriptor: "pip-services:facade-service:default:default:*"
+  root_path: ""
+  connection:
+    protocol: "http"
+    host: "0.0.0.0"
+    port: 8080
+  options:
+    debug: true
+    maintenance_enabled: false
+    max_req_size: "1mb"
+
+# Version 1 facade service
+- descriptor: "pip-services:facade-partition:default:v1.0:*"
+  root_path: "/api/1.0"

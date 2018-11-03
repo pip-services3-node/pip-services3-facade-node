@@ -1,0 +1,56 @@
+{
+    "name": "pip-services3-facade-node",
+    "version": "3.0.2",
+    "author": "Conceptual Vision Consulting LLC",
+    "description": "RESTful Client Facade for Pip.Services in Node.js",
+    "contributors": [
+        {
+            "name": "Sergey Seroukhov",
+            "email": "seroukhov@gmail.com"
+        }
+    ],
+    "main": "./obj/src/index.js",
+    "typings": "./obj/src/index.d.ts",
+    "keywords": [
+        "pip.services",
+        "rest api",
+        "client facade"
+    ],
+    "noAnalyze": true,
+    "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com:pip-services3-node/pip-services3-facade-node.git"
+    },
+    "license": "MIT",
+    "engines": {
+        "node": ">=0.6.14"
+    },
+    "private": false,
+    "scripts": {
+        "start": "node app",
+        "test": "mocha -t 10000 -R spec -u tdd --recursive ./obj/test",
+        "benchmark": "matcha -R clean -I tdd ./benchmark/run.js",
+        "docgen": "typedoc --out doc/api src --mode file --excludeExternals --target ES6 --ignoreCompilerErrors"
+    },
+    "dependencies": {
+        "pip-services3-commons-node": "^3.0.0",
+        "pip-services3-components-node": "^3.0.0",
+        "pip-services3-container-node": "^3.0.0",
+        "pip-services3-rpc-node": "^3.0.0",
+        "express": "3.4.6",
+        "body-parser": "1.16.0",
+        "cors": "2.8.1",
+        "get-methodoverride": "0.1.2",
+        "connect-timeout": "1.8.0",
+        "socket.io": "1.7.2"
+    },
+    "devDependencies": {
+        "@types/node": "*",
+        "@types/lodash": "^4.0.0",
+        "@types/async": "^2.0.0",
+        "@types/mocha": "*",
+        "@types/chai": "*",
+        "mocha": "*",
+        "chai": "*"
+    }
+}

@@ -1,0 +1,40 @@
+﻿let errorSim = require('../../rest/error_sim');
+
+import { FacadeAuthorizationSchemeV1 } from '../../authorization/version1/FacadeAuthorizationSchemeV1';
+import { FacadeRestRoutesV1 } from './FacadeRestRoutesV1';
+
+export class ErrorSimulationRoutesV1 extends FacadeRestRoutesV1 {
+
+    protected register(): void {
+        this.registerRoute('get', '/internal/simulation/errors', FacadeAuthorizationSchemeV1.Admin, this.getConfig);
+
+        this.registerRoute('all', '/internal/simulation/errors/:category/enable', FacadeAuthorizationSchemeV1.Admin, this.enableError);
+        this.registerRoute('all', '/internal/simulation/errors/:category/disable', FacadeAuthorizationSchemeV1.Admin, this.disableError);
+
+        this.registerRoute('all', '/internal/simulation/errors/:category/:error/enable', FacadeAuthorizationSchemeV1.Admin, this.enableError);
+        this.registerRoute('all', '/internal/simulation/errors/:category/:error/disable', FacadeAuthorizationSchemeV1.Admin, this.disableError);
+    }
+
+    private getConfig(req, res) {
+        res.json(errorSim.config);
+    }
+
+    private enableError(req, res) {
+        errorSim.activate({
+            category: req.route.params.category,
+            error: req.route.params.error,
+            probability: req.param('probability'),
+            enabled: true
+        });
+        this.sendResult(req, res)(null, errorSim.config);
+    }
+
+    private disableError(req, res) {
+        errorSim.activate({
+            category: req.route.params.category,
+            enabled: false
+        });
+        this.sendResult(req, res)(null, errorSim.config);
+    }
+
+}
