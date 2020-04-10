@@ -1,5 +1,7 @@
 # <img src="https://github.com/pip-services/pip-services/raw/master/design/Logo.png" alt="Pip.Services Logo" style="max-width:30%"> <br/> RESTful client facade for Node.js
 
+**Important**: This module has been deprecated. Please, use RestOperations from [pip-services3-rpc-node](https://github.com/pip-services3-node/pip-services3-rpc-node) instead.
+
 One of the common implementation patterns is to expose microservices via single entry point called API Gateway or Client Facade.
 The responsiblity of that component is to accept calls from external consumers, enforce security rules, perform authentication and authorization
 and when request is cleared it can call one or few microservices in a single transaction. Client Facades may also implement complex requests,
