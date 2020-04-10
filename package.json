@@ -37,7 +37,7 @@
         "pip-services3-components-node": "^3.0.0",
         "pip-services3-container-node": "^3.0.0",
         "pip-services3-rpc-node": "^3.0.0",
-        "express": "3.4.6",
+        "express": "4.17.1",
         "body-parser": "1.16.0",
         "cors": "2.8.1",
         "get-methodoverride": "0.1.2",
