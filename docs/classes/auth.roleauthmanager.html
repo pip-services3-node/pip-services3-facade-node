@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>OwnerAuthManager | pip-services-facade-node</title>
+	<title>RoleAuthManager | pip-services3-facade-node</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">pip-services-facade-node</a>
+					<a href="../index.html" class="title">pip-services3-facade-node</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -54,10 +54,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="ownerauthmanager.html">OwnerAuthManager</a>
+					<a href="../modules/auth.html">auth</a>
+				</li>
+				<li>
+					<a href="auth.roleauthmanager.html">RoleAuthManager</a>
 				</li>
 			</ul>
-			<h1>Class OwnerAuthManager</h1>
+			<h1>Class RoleAuthManager</h1>
 		</div>
 	</div>
 </header>
@@ -68,7 +71,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">OwnerAuthManager</span>
+						<span class="target">RoleAuthManager</span>
 					</li>
 				</ul>
 			</section>
@@ -79,8 +82,9 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="ownerauthmanager.html#owner" class="tsd-kind-icon">owner</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="ownerauthmanager.html#owneroradmin" class="tsd-kind-icon">owner<wbr>OrAdmin</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="auth.roleauthmanager.html#admin" class="tsd-kind-icon">admin</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="auth.roleauthmanager.html#userinrole" class="tsd-kind-icon">user<wbr>InRole</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="auth.roleauthmanager.html#userinroles" class="tsd-kind-icon">user<wbr>InRoles</a></li>
 							</ul>
 						</section>
 					</div>
@@ -89,22 +93,75 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="owner" class="tsd-anchor"></a>
-					<h3>owner</h3>
+					<a name="admin" class="tsd-anchor"></a>
+					<h3>admin</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">owner<span class="tsd-signature-symbol">(</span>idParam<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
+						<li class="tsd-signature tsd-kind-icon">admin<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-facade-node/blob/013441e/src/auth/OwnerAuthManager.ts#L8">auth/OwnerAuthManager.ts:8</a></li>
+									<li>Defined in auth/RoleAuthManager.ts:46</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">function</span></h4>
+							<ul class="tsd-parameters">
+								<li class="tsd-parameter-siganture">
+									<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>req<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, res<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, next<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+									</ul>
+									<ul class="tsd-descriptions">
+										<li class="tsd-description">
+											<h4 class="tsd-parameters-title">Parameters</h4>
+											<ul class="tsd-parameters">
+												<li>
+													<h5>req: <span class="tsd-signature-type">any</span></h5>
+												</li>
+												<li>
+													<h5>res: <span class="tsd-signature-type">any</span></h5>
+												</li>
+												<li>
+													<h5>next: <span class="tsd-signature-type">function</span></h5>
+													<ul class="tsd-parameters">
+														<li class="tsd-parameter-siganture">
+															<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+																<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+															</ul>
+															<ul class="tsd-descriptions">
+																<li class="tsd-description">
+																	<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+																</li>
+															</ul>
+														</li>
+													</ul>
+												</li>
+											</ul>
+											<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="userinrole" class="tsd-anchor"></a>
+					<h3>user<wbr>InRole</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">user<wbr>InRole<span class="tsd-signature-symbol">(</span>role<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in auth/RoleAuthManager.ts:42</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> idParam: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;user_id&quot;</span></h5>
+									<h5>role: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">function</span></h4>
@@ -148,22 +205,22 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="owneroradmin" class="tsd-anchor"></a>
-					<h3>owner<wbr>OrAdmin</h3>
+					<a name="userinroles" class="tsd-anchor"></a>
+					<h3>user<wbr>InRoles</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">owner<wbr>OrAdmin<span class="tsd-signature-symbol">(</span>idParam<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
+						<li class="tsd-signature tsd-kind-icon">user<wbr>InRoles<span class="tsd-signature-symbol">(</span>roles<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-facade-node/blob/013441e/src/auth/OwnerAuthManager.ts#L35">auth/OwnerAuthManager.ts:35</a></li>
+									<li>Defined in auth/RoleAuthManager.ts:10</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> idParam: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;user_id&quot;</span></h5>
+									<h5>roles: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">function</span></h4>
@@ -214,88 +271,55 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
+					<li class="current tsd-kind-external-module">
+						<a href="../modules/auth.html">auth</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/build.html">build</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/container.html">container</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/index.html">index</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/operations.html">operations</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/routes.html">routes</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/services.html">services</a>
+					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class">
-						<a href="aboutoperations.html" class="tsd-kind-icon">About<wbr>Operations</a>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="auth.basicauthmanager.html" class="tsd-kind-icon">Basic<wbr>Auth<wbr>Manager</a>
 					</li>
-					<li class=" tsd-kind-class">
-						<a href="basicauthmanager.html" class="tsd-kind-icon">Basic<wbr>Auth<wbr>Manager</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="facadefactory.html" class="tsd-kind-icon">Facade<wbr>Factory</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="facadeoperations.html" class="tsd-kind-icon">Facade<wbr>Operations</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="facadeprocess.html" class="tsd-kind-icon">Facade<wbr>Process</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="facaderoutes.html" class="tsd-kind-icon">Facade<wbr>Routes</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="facadeservice.html" class="tsd-kind-icon">Facade<wbr>Service</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="mainfacadeservice.html" class="tsd-kind-icon">Main<wbr>Facade<wbr>Service</a>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="auth.ownerauthmanager.html" class="tsd-kind-icon">Owner<wbr>Auth<wbr>Manager</a>
 					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-class">
-						<a href="ownerauthmanager.html" class="tsd-kind-icon">Owner<wbr>Auth<wbr>Manager</a>
+					<li class="current tsd-kind-class tsd-parent-kind-external-module">
+						<a href="auth.roleauthmanager.html" class="tsd-kind-icon">Role<wbr>Auth<wbr>Manager</a>
 						<ul>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="ownerauthmanager.html#owner" class="tsd-kind-icon">owner</a>
+								<a href="auth.roleauthmanager.html#admin" class="tsd-kind-icon">admin</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="ownerauthmanager.html#owneroradmin" class="tsd-kind-icon">owner<wbr>OrAdmin</a>
+								<a href="auth.roleauthmanager.html#userinrole" class="tsd-kind-icon">user<wbr>InRole</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="auth.roleauthmanager.html#userinroles" class="tsd-kind-icon">user<wbr>InRoles</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-class">
-						<a href="partitionfacadeservice.html" class="tsd-kind-icon">Partition<wbr>Facade<wbr>Service</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="roleauthmanager.html" class="tsd-kind-icon">Role<wbr>Auth<wbr>Manager</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/ifacadeservice.html" class="tsd-kind-icon">IFacade<wbr>Service</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#_" class="tsd-kind-icon">_</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#async" class="tsd-kind-icon">async</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#connecttimeout" class="tsd-kind-icon">connect<wbr>Timeout</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#cors" class="tsd-kind-icon">cors</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#express" class="tsd-kind-icon">express</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#fs" class="tsd-kind-icon">fs</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#getoverride" class="tsd-kind-icon">getoverride</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#http" class="tsd-kind-icon">http</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#https" class="tsd-kind-icon">https</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#os" class="tsd-kind-icon">os</a>
-					</li>
 				</ul>
 			</nav>
 		</div>
