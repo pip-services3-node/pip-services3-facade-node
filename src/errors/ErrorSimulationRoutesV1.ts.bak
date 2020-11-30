@@ -1,4 +1,7 @@
-﻿let errorSim = require('../../rest/error_sim');
+﻿/** @module errors */
+/** @hidden */ 
+
+let errorSim = require('../../rest/error_sim');
 
 import { FacadeAuthorizationSchemeV1 } from '../../authorization/version1/FacadeAuthorizationSchemeV1';
 import { FacadeRestRoutesV1 } from './FacadeRestRoutesV1';

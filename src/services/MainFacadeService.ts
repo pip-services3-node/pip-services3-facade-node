@@ -1,3 +1,5 @@
+/** @module services */
+/** @hidden */ 
 let _ = require('lodash');
 let async = require('async');
 let fs = require('fs');

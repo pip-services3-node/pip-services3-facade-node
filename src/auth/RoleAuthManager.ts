@@ -1,3 +1,5 @@
+/** @module auth */
+/** @hidden */ 
 let _ = require('lodash');
 
 import { UnauthorizedException } from 'pip-services3-commons-node';

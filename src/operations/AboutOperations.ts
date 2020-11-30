@@ -1,4 +1,6 @@
-﻿let os = require('os');
+﻿/** @module operations */
+/** @hidden */ 
+let os = require('os');
 
 import { IReferences } from 'pip-services3-commons-node';
 import { Descriptor } from 'pip-services3-commons-node';

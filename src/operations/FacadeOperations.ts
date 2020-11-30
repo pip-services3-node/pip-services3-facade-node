@@ -1,3 +1,5 @@
+/** @module operations */
+/** @hidden */ 
 let _ = require('lodash');
 
 import { IConfigurable } from 'pip-services3-commons-node';

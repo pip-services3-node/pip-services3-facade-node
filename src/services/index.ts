@@ -1,3 +1,7 @@
+/**
+ * @module services
+ * @preferred
+ */
 export { IFacadeService } from './IFacadeService';
 export { FacadeService } from './FacadeService';
 export { MainFacadeService } from './MainFacadeService';

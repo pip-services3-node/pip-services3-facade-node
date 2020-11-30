@@ -1,3 +1,5 @@
+/** @module services */
+
 export interface IFacadeService {
     getRootPath(): string;
 

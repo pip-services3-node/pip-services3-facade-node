@@ -1,3 +1,5 @@
+/** @module services */
+/** @hidden */ 
 let _ = require('lodash');
 let express = require('express');
 
