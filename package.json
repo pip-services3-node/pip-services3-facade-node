@@ -29,8 +29,7 @@
     "scripts": {
         "start": "node app",
         "test": "mocha -t 10000 -R spec -u tdd --recursive ./obj/test",
-        "benchmark": "matcha -R clean -I tdd ./benchmark/run.js",
-        "docgen": "typedoc --out doc/api src --mode file --excludeExternals --target ES6 --ignoreCompilerErrors"
+        "benchmark": "matcha -R clean -I tdd ./benchmark/run.js"
     },
     "dependencies": {
         "pip-services3-commons-node": "^3.0.0",
@@ -50,7 +49,7 @@
         "@types/async": "^2.0.0",
         "@types/mocha": "*",
         "@types/chai": "*",
-        "mocha": "*",
+        "mocha": "^7.2.0",
         "chai": "*"
     }
 }
