@@ -43,8 +43,8 @@ jobs:
     - name: Build the component
       run: ./build.ps1
 
-    - name: Test the component
-      run: ./test.ps1
+    # - name: Test the component
+    #   run: ./test.ps1
 
     ############# Release #############
 
