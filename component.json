@@ -1,6 +1,6 @@
 {
-    "name": "pip-services3-facade",
+    "name": "pip-services3-facade-node",
     "registry": "pipdevs",
     "version": "3.0.2",
-    "build": "0"
+    "build": 0
 }

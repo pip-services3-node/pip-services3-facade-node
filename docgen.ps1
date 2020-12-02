@@ -1,6 +1,6 @@
 #!/usr/bin/env pwsh
 
-##Set-StrictMode -Version latest
+Set-StrictMode -Version latest
 $ErrorActionPreference = "Stop"
 
 # Get component data and set necessary variables
