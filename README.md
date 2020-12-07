@@ -10,10 +10,10 @@ combine multiple datasets and return then in a single transaction, push notifica
 This module is a part of the [Pip.Services](http://pip.services.org) polyglot microservices toolkit.
 It provides reusable primitives to quickly build sophisticated client facades via composition of multiple routes and middleware components.
 
-- **Auth** - 
-- **Build** - 
-- **Container** -
-- **Operations** -
+- **Auth** - Authentication and authorization components
+- **Build** - Contains a factory for constructing facade components
+- **Container** - Facade launch container
+- **Operations** - Basic facade operations called by clients
 - **Services** - Main and partition (subpath) facade services
 - **Routes** - Abstract facade route class and few generic routes
 - **Errors** - Error simulation
