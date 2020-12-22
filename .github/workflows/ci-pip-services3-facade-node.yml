@@ -15,36 +15,17 @@ jobs:
   
     ############# Prepare #############
 
-    - name: Save build number and component version
+    - name: Install prereq and save build number
       id: build_info
-      run: |
-        echo "##[set-output name=build_number;]$GITHUB_RUN_NUMBER"
-        echo "##[set-output name=component_version;]$(jq -r '.version' ./package.json)"
-        echo "##[set-output name=component_name;]$(jq -r '.name' ./component.json)"
-
-    - name: Install powershell
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y wget apt-transport-https
-        wget -q https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb
-        sudo dpkg -i packages-microsoft-prod.deb
-        sudo apt-get update
-        sudo apt-get install -y powershell
-
-    - name: Install npm cli and node
-      run: |
-        sudo apt-get install curl
-        curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-        sudo apt-get install nodejs
-        sudo npm install -g npm-cli-adduser
+      uses: pip-devops/actions/node/prepare@v1
 
     ############# Build and test #############
 
     - name: Build the component
-      run: ./build.ps1
+      uses: pip-devops/actions/node/build@v1
 
-    # - name: Test the component
-    #   run: ./test.ps1
+    - name: Test the component
+      uses: pip-devops/actions/node/test@v1
 
     ############# Release #############
 
@@ -55,15 +36,14 @@ jobs:
         tag: "${{ steps.build_info.outputs.component_name }}/v${{ steps.build_info.outputs.component_version }}-${{ steps.build_info.outputs.build_number }}"
 
     - name: Release binary artifacts
-      run: ./release.ps1
-      env: 
-        NPM_USER: ${{ secrets.NPM_USER }}
-        NPM_PASS: ${{ secrets.NPM_PASS }}
-        NPM_EMAIL: ${{ secrets.NPM_EMAIL }}
+      uses: pip-devops/actions/node/release@v1
+      with:
+        npm-user: ${{ secrets.NPM_USER }}
+        npm-pass: ${{ secrets.NPM_PASS }}
+        npm-email: ${{ secrets.NPM_EMAIL }}
 
     ############# Clear #############
 
-    - name: Clean temporary build artifacts
-      if: ${{ always() }}
-      run: ./clean.ps1
+    - name: Install prereq and save build number
+      uses: pip-devops/actions/node/clear@v1
     
