@@ -1,3 +1,4 @@
+/** @module routes */
 import { IConfigurable } from 'pip-services3-commons-node';
 import { ConfigParams } from 'pip-services3-commons-node';
 import { IReferences } from 'pip-services3-commons-node';

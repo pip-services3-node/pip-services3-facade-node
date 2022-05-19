@@ -1,3 +1,4 @@
+/** @module services */
 export interface IFacadeService {
     getRootPath(): string;
     registerMiddleware(action: (req: any, res: any, next: () => void) => void): void;

@@ -1,3 +1,7 @@
+/**
+ * @module index
+ * @preferred
+ */
 export * from './auth';
 export * from './services';
 export * from './routes';

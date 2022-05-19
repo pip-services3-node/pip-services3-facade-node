@@ -1,5 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.MainFacadeService = void 0;
+/** @module services */
+/** @hidden */
 let _ = require('lodash');
 let async = require('async');
 let fs = require('fs');
@@ -113,7 +116,7 @@ class MainFacadeService extends FacadeService_1.FacadeService {
             }
             else {
                 // Check for type
-                let protocol = connection.getProtocol("http");
+                let protocol = connection.getProtocolWithDefault("http");
                 if ("http" != protocol && "https" != protocol) {
                     err = new pip_services3_commons_node_2.ConfigException(correlationId, "WRONG_PROTOCOL", "Protocol is not supported by REST connection")
                         .withDetails("protocol", protocol);
@@ -132,7 +135,7 @@ class MainFacadeService extends FacadeService_1.FacadeService {
     }
     getCredential(correlationId, connection, callback) {
         // Credentials are not required unless HTTPS is used
-        if (connection.getProtocol("http") != "https") {
+        if (connection.getProtocolWithDefault("http") != "https") {
             callback(null, null);
             return;
         }
@@ -154,7 +157,7 @@ class MainFacadeService extends FacadeService_1.FacadeService {
         });
     }
     createHttp(server, connection, credential) {
-        if (connection.getProtocol('http') == 'https') {
+        if (connection.getProtocolWithDefault('http') == 'https') {
             let sslKeyFile = credential.getAsNullableString('ssl_key_file');
             let privateKey = fs.readFileSync(sslKeyFile).toString();
             let sslCrtFile = credential.getAsNullableString('ssl_crt_file');
@@ -224,6 +227,6 @@ class MainFacadeService extends FacadeService_1.FacadeService {
             next();
     }
 }
-MainFacadeService._defaultConfig = pip_services3_commons_node_1.ConfigParams.fromTuples('root_path', '', 'connection.protocol', 'http', 'connection.hostname', '0.0.0.0', 'connection.port', 8080, 'credential.ssl_key_file', null, 'credential.ssl_crt_file', null, 'credential.ssl_ca_file', null, 'options.debug', true, 'options.maintenance_enabled', false, 'options.max_sockets', 50, 'options.max_req_size', '1mb');
 exports.MainFacadeService = MainFacadeService;
+MainFacadeService._defaultConfig = pip_services3_commons_node_1.ConfigParams.fromTuples('root_path', '', 'connection.protocol', 'http', 'connection.hostname', '0.0.0.0', 'connection.port', 8080, 'credential.ssl_key_file', null, 'credential.ssl_crt_file', null, 'credential.ssl_ca_file', null, 'options.debug', true, 'options.maintenance_enabled', false, 'options.max_sockets', 50, 'options.max_req_size', '1mb');
 //# sourceMappingURL=MainFacadeService.js.map

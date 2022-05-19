@@ -155,7 +155,7 @@ export class MainFacadeService extends FacadeService implements IOpenable {
                     correlationId, "NO_CONNECTION", "Connection for REST client is not defined");
             } else {
                 // Check for type
-                let protocol: string = connection.getProtocol("http");
+                let protocol: string = connection.getProtocolWithDefault("http");
                 if ("http" != protocol && "https" != protocol) {
                     err = new ConfigException(
                         correlationId, "WRONG_PROTOCOL", "Protocol is not supported by REST connection")
@@ -179,7 +179,7 @@ export class MainFacadeService extends FacadeService implements IOpenable {
         callback: (err: any, result: CredentialParams) => void): void {
 
         // Credentials are not required unless HTTPS is used
-        if (connection.getProtocol("http") != "https") {
+        if (connection.getProtocolWithDefault("http") != "https") {
             callback(null, null);
             return;
         }
@@ -206,7 +206,7 @@ export class MainFacadeService extends FacadeService implements IOpenable {
     }
 
     private createHttp(server: any, connection: ConnectionParams, credential: CredentialParams): any {
-        if (connection.getProtocol('http') == 'https') {
+        if (connection.getProtocolWithDefault('http') == 'https') {
             let sslKeyFile = credential.getAsNullableString('ssl_key_file');
             let privateKey = fs.readFileSync(sslKeyFile).toString();
 

@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.FacadeProcess = void 0;
 const pip_services3_container_node_1 = require("pip-services3-container-node");
 const FacadeFactory_1 = require("../build/FacadeFactory");
 class FacadeProcess extends pip_services3_container_node_1.ProcessContainer {

@@ -1,5 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.FacadeService = void 0;
+/** @module services */
+/** @hidden */
 let _ = require('lodash');
 let express = require('express');
 const pip_services3_commons_node_1 = require("pip-services3-commons-node");

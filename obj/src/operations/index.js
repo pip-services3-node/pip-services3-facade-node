@@ -1,7 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.AboutOperations = exports.FacadeOperations = void 0;
+/**
+ * @module operations
+ * @preferred
+ */
 var FacadeOperations_1 = require("./FacadeOperations");
-exports.FacadeOperations = FacadeOperations_1.FacadeOperations;
+Object.defineProperty(exports, "FacadeOperations", { enumerable: true, get: function () { return FacadeOperations_1.FacadeOperations; } });
 var AboutOperations_1 = require("./AboutOperations");
-exports.AboutOperations = AboutOperations_1.AboutOperations;
+Object.defineProperty(exports, "AboutOperations", { enumerable: true, get: function () { return AboutOperations_1.AboutOperations; } });
 //# sourceMappingURL=index.js.map

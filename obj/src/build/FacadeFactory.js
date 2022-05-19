@@ -1,5 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.FacadeFactory = void 0;
+/** @module build */
 const pip_services3_components_node_1 = require("pip-services3-components-node");
 const pip_services3_commons_node_1 = require("pip-services3-commons-node");
 const MainFacadeService_1 = require("../services/MainFacadeService");
@@ -13,11 +15,11 @@ class FacadeFactory extends pip_services3_components_node_1.Factory {
         this.registerAsType(FacadeFactory.AboutOperationsDescriptor, AboutOperations_1.AboutOperations);
     }
 }
+exports.FacadeFactory = FacadeFactory;
 FacadeFactory.Descriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "factory", "facade", "default", "1.0");
 FacadeFactory.MainFacadeServiceDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "facade-service", "default", "*", "1.0");
 FacadeFactory.PartitionFacadeServiceDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "facade-partition", "default", "*", "1.0");
 FacadeFactory.AuthManagerDescriptor = new pip_services3_commons_node_1.Descriptor("pip-service", "facade-authorization", "default", "*", "1.0");
 FacadeFactory.SessionManagerDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "facade-session", "default", "*", "1.0");
 FacadeFactory.AboutOperationsDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "facade-operations", "about", "*", "1.0");
-exports.FacadeFactory = FacadeFactory;
 //# sourceMappingURL=FacadeFactory.js.map

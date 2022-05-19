@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.PartitionFacadeService = void 0;
 const pip_services3_commons_node_1 = require("pip-services3-commons-node");
 const FacadeService_1 = require("./FacadeService");
 class PartitionFacadeService extends FacadeService_1.FacadeService {
