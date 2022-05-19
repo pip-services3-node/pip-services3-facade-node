@@ -24,8 +24,8 @@ jobs:
     - name: Build the component
       uses: pip-devops/actions/node/build@v1
 
-    - name: Test the component
-      uses: pip-devops/actions/node/test@v1
+    # - name: Test the component
+    #   uses: pip-devops/actions/node/test@v1
 
     ############# Release #############
 
