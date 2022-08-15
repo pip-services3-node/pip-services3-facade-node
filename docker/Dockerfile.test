@@ -1,14 +1,26 @@
-FROM node:8
+FROM node:14
 
-# set working directory
+# Copy npm config
+COPY docker/.npmrc /root/.npmrc
+
+# Copy local ssh keys
+COPY docker/id_rsa /root/.ssh/
+
+# Setup ssh access to git repositories
+RUN chmod 600 /root/.ssh/id_rsa* \
+    && ssh-keyscan github.com >> ~/.ssh/known_hosts \
+    && ssh-keyscan gitlab.com >> ~/.ssh/known_hosts
+
+# Set working directory
 WORKDIR /app
-# copy project file
+
+# Copy project file
 COPY package.json .
- 
-# install ALL node_modules, including 'devDependencies'
+
+# Install ALL node_modeles, including 'devDependencies'
 RUN npm install
 
-# copy all project
+# Copy the entire project
 COPY . .
- 
+
 CMD [ "npm", "test" ]

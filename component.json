@@ -1,6 +1,14 @@
 {
-    "name": "pip-services3-facade-node",
-    "registry": "pipdevs",
+    "name":  "pip-services3-facade-node",
+    "type": "module",
+    "language": "node",
     "version": "3.0.3",
-    "build": 0
+    "build": 0,
+    "registry": "pipdevs",
+    "artifacts": [
+        {
+            "name":  "<name>",
+            "type": "npm"
+        }
+    ]
 }

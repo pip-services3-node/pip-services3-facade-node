@@ -3,4 +3,7 @@
 /debug.log
 /error.log
 /obj/test
+package-lock.json
 .npmrc
+docker/id_rsa
+docker/.npmrc

@@ -1,18 +1,30 @@
-FROM node:8
+FROM node:14
+
+# Copy npm config
+COPY docker/.npmrc /root/.npmrc
+
+# Copy local ssh keys
+COPY docker/id_rsa /root/.ssh/
+
+# Setup ssh access to git repositories
+RUN chmod 600 /root/.ssh/id_rsa* \
+    && ssh-keyscan github.com >> ~/.ssh/known_hosts \
+    && ssh-keyscan gitlab.com >> ~/.ssh/known_hosts
+
+# Set working directory
+WORKDIR /app
 
 # Install development tools
 RUN npm install typescript -g
 
-# set working directory
-WORKDIR /app
-# copy project file
+# Copy project file
 COPY package.json .
- 
-# install ALL node_modules, including 'devDependencies'
+
+# Install ALL node_modules, including 'devDependencies'
 RUN npm install
 
-# copy all project
+# Copy entire project
 COPY . .
 
-# compile source code
+# Compile source in typescript
 RUN tsc
